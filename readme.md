@@ -1,2 +1,1 @@
-RecSysHandBookµÄ±Ê¼Ç+latexÅÅ°æ
-Ê¹ÓÃµÄÊÇhttp://www.latexstudio.net/elegantbook-version-2-00-released/µÄÄ£°å
+RecSysHandBookçš„ç¬”è®°+latexæ’ç‰ˆ
