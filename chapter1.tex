@@ -5,10 +5,36 @@
 
 因此，用户建模和个性化信息的获取变得非常重要：用户根据他们的兴趣和品位，需要大量的可用的信息来支持他们的个性化选择。
 
-许多用户的个性化信息内容被加入到推荐系统中
+许多用户的个性化信息内容被加入到推荐系统中[73]。推荐系统引导用户对大量感兴趣和有用的东西进行个性化选择[17]。推荐系统算法使用关于消费者兴趣的输入产生一个推荐列表。在Amazon.com，推荐系统算法被用于为每个消费者提供在线的个性化服务，例如，给软件工程师展示编程类的商品，为新妈妈展示宝宝的玩具[50]。
+
+推荐系统的问题已经被广泛研究，而且出现了两个范式。基于内容的推荐系统尝试尝试推荐那些用户过去喜欢的产品的相似产品，而协同推荐范式识别那些偏好相似的用户，推荐他们喜欢的产品[7]。
+
+本章中，将对基于内容的推荐系统进行全面系统的研究，分为两个部分：
+\begin{itemize}
+	\item 提供最新技术的一个大纲，包含那些最有效的应用最广泛的技术。
+	\item 阐述基于内容的推荐系统未来发展的趋势和方向。
+\end{itemize}
+
+\section{基于内容的推荐系统基础}
+基于内容的推荐方法分析用户曾经评分过的产品的描述性文档，然后基于产品为用户兴趣建模[63]。推荐过程基本上是匹配用户侧写的属性和内容目标的属性。
+
+\subsection{基于内容系统的体系结构}
+基于内容的推荐系统的体系结构如图1.1所示
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[scale=0.5]{figure/f3.1.jpg}
+	\caption{基于内容的推荐系统的体系结构}
+\end{figure}
+
+如上图所示，生成推荐的过程主要依靠三个部件：
+\begin{itemize}
+	\item 内容分析器：从原先的商品信息（例如文档、网页、新闻、产品描述）中提取有用的信息用一种适当的方式表示。例如（将网页表示成关键词向量）该表示形式将作为属性学习器和过滤部件的输入结点。
+	\item 文件学习器：该模块收集、泛化代表用户偏好的数据，生成用户概要信息。通常，是采用机器学习方法从用户之前喜欢和不喜欢的商品信息中推出一个表示用户喜好的模型。例如，一个基于网页的推荐系统的属性学习器能够实现一个相关反馈的方法，将表示正面和负面例子的向量与表示用户概要信息的原型向量混合在一起。训练样例是那些附有用户正面和负面反馈信息的网页。
+	\item  过滤部件：通过学习用户概要信息，匹配用户概要信息和商品信息，推荐相关的商品，结果是一个二元的连续型的相关判断（相似度度量）。后者将生成一个用户可能感兴趣的潜在商品评分列表。该匹配是计算原型向量和商品向量的余弦相似度。
+\end{itemize} 
 
 
-\begin{thebibliography}{99}
+\begin{thebibliography}{110}
 \bibitem {Aciar}Aciar, S., Zhang, D., Simoff, S., Debenham, J.: Informed Recommender: Basing Recommendations on Consumer Product Reviews. IEEE Intelligent Systems 22(3), 39–47 (2007)
 \bibitem {Ahn}Ahn, J., Brusilovsky, P., Grady, J., He, D., Syn, S.Y.: Open User Profiles for Adaptive News Systems: Help or Harm? In: C.L.Williamson, M.E. Zurko, P.F. Patel-Schneider, P.J. Shenoy (eds.) Proceedings of the 16th International Conference on World Wide Web, pp. 11–20. ACM (2007)
 \bibitem {Anderson}Anderson, M.: Google Searches for Ad Dollars in Social Networks. IEEE Spectrum 45(12), 16 (2008)
@@ -19,6 +45,7 @@
 \bibitem {Basile}Basile, P., Degemmis, M., Gentile, A., Lops, P., Semeraro, G.: UNIBA: JIGSAW algorithm for Word Sense Disambiguation. In: Proceedings of the 4th ACL 2007 International Workshop on Semantic Evaluations (SemEval-2007), Prague, Czech Republic, pp. 398–401. Association for Computational Linguistics (2007)
 \bibitem {Basile}Basile, P., de Gemmis, M., Gentile, A., Iaquinta, L., Lops, P., Semeraro, G.: An Electronic Performance Support System Based on a Hybrid Content-Collaborative Recommender System. Neural Network World: International Journal on Neural and Mass-Parallel Computing and Information Systems 17(6), 529–541 (2007)
 \bibitem {Basile}Basile, P., de Gemmis, M., Gentile, A., Iaquinta, L., Lops, P.: The JUMP project: Domain Ontologies and Linguistic Knowledge @ Work. In: Proceedings of the 4th Italian Semantic Web Applications and Perspectives - SWAP 2007, CEUR Workshop Proceedings. CEURWS. org (2007)
+\bibitem {Billsus}Billsus, D., Pazzani, M.: Learning Probabilistic User Models. In: Proceedings of the Workshop on Machine Learning for User Modeling. Chia Laguna, IT (1997). URL citeseer.nj.nec.com/billsus96learning.html
 \bibitem {Billsus}Billsus, D., Pazzani, M.J.: A Hybrid User Model for News Story Classification. In: Proceedings of the Seventh International Conference on User Modeling.Banff, Canada (1999)
 \bibitem {Billsus}Billsus, D., Pazzani, M.J.: User Modeling for Adaptive News Access. User Modeling and User-Adapted Interaction 10(2-3), 147–180 (2000)
 \bibitem {Blanco-Fernandez}Blanco-Fernandez, Y., Pazos-Arias J. J., G.S.A., Ramos-Cabrer, M., Lopez-Nores, M.: Providing Entertainment by Content-based Filtering and Semantic Reasoning in Intelligent Recommender Systems. IEEE Transactions on Consumer Electronics 54(2), 727–735 (2008)
