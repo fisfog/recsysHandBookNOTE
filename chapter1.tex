@@ -51,6 +51,51 @@
 \section{基于内容的推荐系统的最新技术}
 
 \subsection{项目表示法}
+被推荐给用户的的项目被标示成一系列特征的集合，也被称为属性。例如，在电影推荐系统中，电影的特征被提取出来为：演员、导演、类型、主题等等。
+
+在大多数基于内容的过滤系统中，项目描述是从网页、电邮、新文章或产品描述上提取的文本特征。不像结构化的数据，这些属性都没有良定义的数值。由于自然语言的歧义性，文本的特征复杂了学习模型。问题在于传统的基于关键词的属性不能够有效地捕捉到用户的兴趣的语义信息。字符串匹配遇到的问题在于：
+\begin{itemize}
+	\item 一词多义
+	\item 同义词
+\end{itemize}
+
+这些问题导致了相关信息丢失，而错的文档却被认为是相关的。
+
+语义分析及其个性化模型集成式解决这些问题的一种方法。
+
+\subsubsection{基于关键词的向量空间模型}
+我们用$D=\{d_1,d_2,\dots,d_N\}$表示文档集合或语料库，$T=\{t_1,t_2,\dots,t_n\}$表示字典，即语料库中的单词集合。$T$的获取采用标准自然语言处理操作，如标记化，停用词去除和词干提取[6]。每篇文档$d_j$都被表示成一个n维的向量空间，$d_j=\{w_{1j},w_{2j},\dots,d_{nj}\}$，其中$w_{kj}$是文档$d_j$中术语$t_k$的权重。
+
+VSM中用户偏好文档和推荐项目文档都采用关键词表示特征, 进而采用TF-IDF方法为每个特征分配一个权重[79]。
+
+$$ \textrm{TF-IDF}(t_k,d_j)=\textrm{TF}(t_k,d_j)\cdot log\frac{N}{n_k} $$
+
+其中$N$是语料库中文档的数量，$n_k$表示文档中术语出现的次数。
+
+$$ \textrm{TF}(t_k,d_j)=\frac{f_{k,j}}{max_zf_{z,j}} $$
+
+其中分母是所有出现在文档$d_j$中的术语$t_z$的频率$f_{z,j}$的最大值。为了使权重落在$[0,1]$之间，且使文档能由一个等长的向量表示，TD-IDF被余弦归一化为：
+
+$$ w_{k,j}=\frac{\textrm{TF-IDF}(t_k,d_j)}{\sqrt{\sum_{s=1}^{|T|}\textrm{TF-IDF}(t_k,d_j)^2}} $$
+
+然后我们就能计算两篇文档的相近程度。用的最广泛的相似度度量方法是余弦相似度：
+
+$$ sim(d_i,d_j)=\frac{\sum_kw_{ki}\cdot w_{kj}}{\sqrt{\sum_kw_{ki}^2}\cdot\sqrt{\sum_kw_{kj}^2}} $$
+
+基于内容的推荐系统都依赖于VSM，不管是描述用户属性还是被标示成术语向量的项目。
+
+\subsubsubsection{基于关键词系统的回顾}
+基于关键字的系统已经开发出来了许多，应用在新闻、音乐、电子商务、电影等各种领域，每个领域都有不同的难点，也需要不同的解决方法。
+
+在网页推荐中，著名系统的有Letizia[49]、Personal WebWatcher[62,63]、Syskill&Webert[70,68]、ifWeb[4]、Amalthea[66]和WebMate[23]。
+
+在新闻过滤领域，值得注意的系统有，NewT [87]、PSUN [90]、INFOrmer [91]、NewsDude [12]、Daily Learner [13]和YourNews [2].
+
+在音乐领域，主要用的技术还是CF的技术。但值得注意的系统是使用手动基于内容描述的推荐音乐的系统Pandora。相反的，FOAFing the music[21,22]是能够推荐，发现和探索音乐内容的系统，它基于用户的属性通过Friend of a Friend（FOAF）描述。
+
+
+
+
 
 \begin{thebibliography}{110}
 \bibitem {Aciar}Aciar, S., Zhang, D., Simoff, S., Debenham, J.: Informed Recommender: Basing Recommendations on Consumer Product Reviews. IEEE Intelligent Systems 22(3), 39–47 (2007)
